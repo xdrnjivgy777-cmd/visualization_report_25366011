@@ -7,9 +7,17 @@ import os
 font_path = 'NotoSansJP-Regular.ttf'
 
 if os.path.exists(font_path):
-    prop = fm.FontProperties(fname=font_path)
-    plt.rcParams['font.family'] = prop.get_name()
-    plt.rcParams['axes.unicode_minus'] = False
+    fe = fm.FontEntry(
+        fname=font_path,
+        name='NotoSansJP' 
+    )
+    fm.fontManager.ttflist.insert(0, fe)
+    
+    plt.rcParams['font.family'] = fe.name
+else:
+    print(f"警告：未找到字体文件 {font_path}")
+
+plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(layout='wide', page_title='日本物価・消費分析ダッシュボード')
 
