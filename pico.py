@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
-
+plt.rcParams['axes.unicode_minus'] = False 
 st.set_page_config(layout='wide', page_title='日本物価・消費分析ダッシュボード')
 
 @st.cache_data
