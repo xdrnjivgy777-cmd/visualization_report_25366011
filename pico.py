@@ -1,20 +1,15 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import os
 
-# --- クラウド/ローカル両対応のフォント設定 ---
-def set_jp_font():
-    # サーバー上のフォントパス候補（packages.txtで入れたフォント）
-    font_path = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
-    if os.path.exists(font_path):
-        plt.rcParams['font.family'] = 'Noto Sans CJK JP'
-    else:
-        # Macローカル環境用
-        plt.rcParams['font.family'] = 'Hiragino Sans'
-    plt.rcParams['axes.unicode_minus'] = False 
+font_path = 'NotoSansJP-Regular.ttf'
 
-set_jp_font()
+if os.path.exists(font_path):
+    prop = fm.FontProperties(fname=font_path)
+    plt.rcParams['font.family'] = prop.get_name()
+    plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(layout='wide', page_title='日本物価・消費分析ダッシュボード')
 
