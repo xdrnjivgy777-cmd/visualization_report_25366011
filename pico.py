@@ -15,7 +15,7 @@ if os.path.exists(font_path):
     
     plt.rcParams['font.family'] = fe.name
 else:
-    print(f"警告：未找到字体文件 {font_path}")
+    print(f'{font_path}を見つけない')
 
 plt.rcParams['axes.unicode_minus'] = False
 
@@ -130,7 +130,7 @@ with tab2:
             ax2.axvline(0, color='gray', linestyle='--', alpha=0.5)
             ax2.set_xlabel('単価の変化率 (%)')
             ax2.set_ylabel('点数の変化率 (%)')
-            ax2.set_title('食品分類の影響：単価 vs 点数 (バブルの大きさ：金額)', fontsize=16)
+            ax2.set_title('商品分類の影響：単価 vs 点数 (バブルの大きさ：金額)', fontsize=16)
             plt.colorbar(scatter, label='金額に対する寄与率 (%)')
             st.pyplot(fig2)
             
